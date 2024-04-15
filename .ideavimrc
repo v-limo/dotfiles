@@ -1,0 +1,296 @@
+"" Base Settings
+"" ========================================================
+set scrolloff=10
+set linenumber
+set showmode
+set showcmd
+
+set smartcase
+set incsearch
+set hlsearch
+
+set visualbell
+set commentary
+" Use system clipboard
+set clipboard+=unnamed
+
+let mapleader = " "
+"" Plugin Settings
+"" ========================================================
+
+set surround
+set highlightedyank
+set sneak
+set nerdtree
+set quickscope
+
+" Easymotion settings
+set easymotion
+set notimeout
+
+"" Key mappings
+"" ========================================================
+inoremap jk <Esc>
+
+" Navigation behaviour
+map H ^
+map L $
+map J }
+map K {
+
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
+" Pane navigation on Mac
+nnoremap <D-h> <C-w>h
+nnoremap <D-l> <C-w>l
+nnoremap <D-k> <C-w>k
+nnoremap <D-j> <C-w>j
+
+" Add space when pressing Enter in normal mode
+nnoremap <CR> o<Esc>
+
+" After block yank and paste, move cursor to the end of operated text and don't override register
+vnoremap p "_dP`]
+nnoremap p p`]
+
+" Y yank whole line by default
+vnoremap y ygv<Esc>$
+nnoremap Y y$
+
+" Yank and paste from clipboard
+nnoremap ,y "+y
+vnoremap ,y "+y
+nnoremap ,yy "+yy
+nnoremap ,p "+p
+nmap ,c yiw  " Yank Word
+nmap ,v viw  " Select word
+
+" Folding
+nmap zz <Action>(ExpandCollapseToggleAction)
+nmap za <Action>(CollapseAllRegions)
+nmap zA <Action>(ExpandAllRegions)
+
+" I dont really know this :)
+nmap <C-k> <C-w>k
+nmap <C-j> <C-w>j
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+
+" Tab navigation
+nnoremap <c-n> :tabnext<CR>
+nnoremap <c-p> :tabprev<CR>
+nmap <Tab> <Action>(NextTab)
+
+" Jump between methods - Not  working as expected
+nnoremap [[ <Action>(MethodUp)
+nnoremap ]] <Action>(MethodDown)
+
+" location
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Execute macro saved in 'q' register
+nnoremap qj @q
+
+" Popup navigation
+map <C-j> <Action>(PopupMenu-selectNext)
+map <C-k> <Action>(PopupMenu-selectPrev)
+
+inoremap <D-k> <Esc>:m-2<CR>==gi
+nnoremap <D-j> :m+<CR>==
+nnoremap <D-k> :m-2<CR>==
+inoremap <D-j> <Esc>:m+<CR>==gi
+vnoremap <D-j> :m'>+<CR>gv=gv
+vnoremap <D-k> :m-2<CR>gv=gv
+
+
+"" Leader commands
+"" ========================================================
+" Actions
+map <leader>am <action>(ShowIntentionActions)
+map <leader>aa <action>(ShowIntentionActions)
+map <leader>as <action>(SearchEverywhere)
+
+" Toggle bookmark
+map <leader>b <action>(ToggleBookmark)
+
+" Comment lines
+map <leader>c <action>(CommentByLineComment)
+
+" Display options
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>dz <action>(ToggleZenMode)
+map <leader>df <action>(ToggleFullScreen)
+
+" Errors Open NERDTree (use q to exit)
+map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+map <leader>ee :NERDTreeToggle<CR>
+nmap <leader>ad <action>(ShowErrorDescription)
+
+" File navigation
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fc <action>(FindInPath)
+map <leader><leader> <action>(ShowIntentionActions)
+map <leader>fl <action>(RecentLocations)
+map <leader>fs <action>(NewScratchFile)
+
+
+" Go to code
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gy <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gu <Action>(ShowUsages)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gb <Action>(Forward)
+nmap <leader>gf <Action>(Back)
+
+" Git windows
+map <leader>gc <Action>(CheckinProject)
+map <leader>gs <Action>(ActivateVersionControlToolWindow)
+map <leader>gb <Action>(Git.Branches)
+
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
+
+
+" New ...
+nmap <leader>nn <Action>(NewElement)
+nmap <leader>nf <Action>(NewFile)
+nmap <leader>nd <Action>(NewDir)
+nmap <leader>nc <Action>(NewClass)
+nmap <leader>nm <Action>(NewModule)
+nmap <leader>np <Action>(NewProject)
+
+" Formatting
+map  <leader>p <action>(ReformatCode)
+map = <action>(ReformatCode)
+
+" Close active tab
+map <leader>qq <action>(CloseContent)
+map <leader>qa <action>(CloseAllEditors)
+map <leader>qo <Action>(CloseAllEditorsButActive)
+map <leader>qp <Action>(CloseAllUnpinnedEditors)
+
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" Terminal
+nmap <leader>tt <Action>(ActivateTerminalToolWindow)
+nmap <leader>tc <Action>(Terminal.OpenInTerminal)
+
+" Select
+map <leader>va <Action>(SelectAll)
+
+" Window splits
+map <leader>wv  <Action>(SplitVertically)
+map <leader>ws  <Action>(SplitHorizontally)
+map <leader>wu  <Action>(Unsplit)
+map <leader>wm  <Action>(MoveEditorToOppositeTabGroup)
+map <leader>wh  <Action>(MoveWindowLeft)
+map <leader>wj  <Action>(MoveWindowDown)
+map <leader>wk  <Action>(MoveWindowUp)
+map <leader>wl  <Action>(MoveWindowRight)
+map <leader>ww <Action>(HideAllWindows)
+map <leader>wa <Action>(UnsplitAll)
+
+" Tests
+map <leader>tr <Action>(RiderUnitTestRunContextAction)
+map <C-n> :action(MoveSelectionDown)<CR>
+
+
+" Which-key settings
+set which-key
+let g:WhichKey_FontSize = 13
+let g:WhichKey_CommandColor = "#41ead4"j
+let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first˜"
+
+let g:WhichKeyDesc_action = "<leader>a Actions"
+let g:WhichKeyDesc_action_context_menu = "<leader>Show Intention"
+let g:WhichKeyDesc_action_alt = "<leader>aa Show Intention"
+let g:WhichKeyDesc_action_search = "<leader>as Search everywhere "
+
+let g:WhichKeyDesc_bookmark = "<leader>b Toggle Bookmark"
+
+let g:WhichKeyDesc_comment = "<leader>c Comment"
+
+let g:WhichKeyDesc_display = "<leader>d Display"
+let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle ZenMode"
+let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free"
+let g:WhichKeyDesc_fullscreen = "<leader>df Toggle FullScreen"
+
+let g:WhichKeyDesc_open_nerdtree = "<leader>ee Open NERDTree"
+let g:WhichKeyDesc_errors = "<leader>e Errors-NERDTree"
+let g:WhichKeyDesc_errors_next = "<leader>en Next Error"
+let g:WhichKeyDesc_errors_prev = "<leader>ep Previous Error"
+
+let g:WhichKeyDesc_file_nav = "<leader>f File Navigation"
+let g:WhichKeyDesc_file_nav_goto_file = "<leader>ff Go to File"
+let g:WhichKeyDesc_file_nav_show_recent_files = "<leader>fr Recent Files"
+let g:WhichKeyDesc_file_nav_goto_content = "<leader>fc Find in Path"
+" let g:WhichKeyDesc_file_quickLook = "<leader><leader> Recent Files"
+let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>fl Recent Locations"
+let g:WhichKeyDesc_file_scratch = "<leader>fs New Scratch File"
+
+let g:WhichKeyDesc_goto = "<leader>g Go to Code"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go to Declaration"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gy Go to Type Declaration"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go to Implementation"
+let g:WhichKeyDesc_goto_usages = "<leader>gu Show Usages"
+let g:WhichKeyDesc_goto_test = "<leader>gt Go to Test"
+let g:WhichKeyDesc_goto_back = "<leader>gb Go Back"
+let g:WhichKeyDesc_goto_forward = "<leader>gf Go Forward"
+
+let g:WhichKeyDesc_git = "<leader>g Git Windows"
+let g:WhichKeyDesc_git_commit = "<leader>gc Checkin Project"
+let g:WhichKeyDesc_git_status = "<leader>gs Activate Version Control Tool Window"
+let g:WhichKeyDesc_git_branches = "<leader>gb Git Branches"
+
+" let g:WhichKeyDesc_easymotion = "<leader>j Jump Easymotion"
+
+" let g:WhichKeyDesc_easymotion = "<leader>mm MainMenu"
+
+" let g:WhichKeyDesc_easymotion = "<leader>p Reformat"
+
+let g:WhichKeyDesc_close_tab = "<leader>q Close Tabs"
+let g:WhichKeyDesc_close_tab_close_content = "<leader>qq Close Content"
+let g:WhichKeyDesc_close_tab_close_all_editors = "<leader>qa Close All Editors"
+let g:WhichKeyDesc_close_tab_close_all_but_active = "<leader>qo Close All Editors But Active"
+let g:WhichKeyDesc_close_tab_close_all_unpinned_editors = "<leader>qp Close All Unpinned Editors"
+
+let g:WhichKeyDesc_refactoring = "<leader>r Refactoring"
+let g:WhichKeyDesc_refactoring_rename = "<leader>rn Rename Element"
+let g:WhichKeyDesc_refactoring_method = "<leader>rm Extract Method"
+let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce Variable"
+let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce Field"
+let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change Signature"
+let g:WhichKeyDesc_refactoring_all = "<leader>rr Quick List Popup Action"
+
+let g:WhichKeyDesc_terminal = "<leader>t Terminal"
+let g:WhichKeyDesc_terminal_activate = "<leader>tt  Terminal Window"
+let g:WhichKeyDesc_terminal_open = "<leader>tc Open in Terminal"
+
+let g:WhichKeyDesc_window = "<leader>w Window Splits"
+let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split Vertically"
+let g:WhichKeyDesc_window_split_horizontally = "<leader>ws Split Horizontally"
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move Editor to Opposite Tab Group"
+let g:WhichKeyDesc_window_hide_all = "<leader>ww Hide All Windows"
+let g:WhichKeyDesc_window_unsplit_all = "<leader>wa Unsplit All"
+
+" https://github.com/fanxiao92/ideavimguid
+" https://github.com/OptimusCrime/ideavim/blob/master/ideavimrc
+" https://github.com/citizenmatt/dotfiles/blob/master/ideavimrc
+" https://github.com/savesmith/Vim/blob/master/.ideavimrc 
