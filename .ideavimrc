@@ -1,35 +1,27 @@
 "" Base Settings
-"" ========================================================
 set scrolloff=10
 set linenumber
 set showmode
 set showcmd
-
 set smartcase
 set incsearch
 set hlsearch
-
 set visualbell
 set commentary
-" Use system clipboard
 set clipboard+=unnamed
-
-let mapleader = " "
-"" Plugin Settings
-"" ========================================================
-
 set surround
 set highlightedyank
 set sneak
 set nerdtree
 set quickscope
-
-" Easymotion settings
 set easymotion
 set notimeout
 
+let mapleader = " "
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
 "" Key mappings
-"" ========================================================
 inoremap jk <Esc>
 
 " Navigation behaviour
@@ -38,14 +30,15 @@ map L $
 map J }
 map K {
 
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeMapJumpParent='h'
-
 " Pane navigation on Mac
 nnoremap <D-h> <C-w>h
 nnoremap <D-l> <C-w>l
 nnoremap <D-k> <C-w>k
 nnoremap <D-j> <C-w>j
+
+" code completion
+map <C-n>  <Action>(HippieCompletion)
+map <C-p> <Action>(HippieBackwardCompletion)
 
 " Add space when pressing Enter in normal mode
 nnoremap <CR> o<Esc>
@@ -66,6 +59,7 @@ nnoremap ,p "+p
 nmap ,c yiw  " Yank Word
 nmap ,v viw  " Select word
 
+
 " Folding
 nmap zz <Action>(ExpandCollapseToggleAction)
 nmap za <Action>(CollapseAllRegions)
@@ -82,13 +76,23 @@ nnoremap <c-n> :tabnext<CR>
 nnoremap <c-p> :tabprev<CR>
 nmap <Tab> <Action>(NextTab)
 
-" Jump between methods - Not  working as expected
-nnoremap [[ <Action>(MethodUp)
-nnoremap ]] <Action>(MethodDown)
+" Jump between methods - Previous was ]]
+nmap [ <Action>(MethodUp)
+nmap ] <Action>(MethodDown)
 
 " location
 nmap <C-i> <Action>(Back)
 nmap <C-o> <Action>(Forward)
+map g; <Action>(JumpToLastChange)
+map g, <Action>(JumpToNextChange)
+
+
+" code completion
+map <C-k> <Action>(EditorSelectWord)
+map <C-l> <Action>(EditorCompleteStatement)
+imap <C-;> <Esc><Action>(EditorCompleteStatement)i
+nmap <C-;> <Action>(EditorCompleteStatement)
+
 
 " Easy visual indentation
 vnoremap < <gv
@@ -97,10 +101,11 @@ vnoremap > >gv
 " Execute macro saved in 'q' register
 nnoremap qj @q
 
-" Popup navigation
+" Popup navigation - not working as expected
 map <C-j> <Action>(PopupMenu-selectNext)
 map <C-k> <Action>(PopupMenu-selectPrev)
 
+" move code up and down
 inoremap <D-k> <Esc>:m-2<CR>==gi
 nnoremap <D-j> :m+<CR>==
 nnoremap <D-k> :m-2<CR>==
@@ -108,13 +113,10 @@ inoremap <D-j> <Esc>:m+<CR>==gi
 vnoremap <D-j> :m'>+<CR>gv=gv
 vnoremap <D-k> :m-2<CR>gv=gv
 
-
-"" Leader commands
-"" ========================================================
+" Leader commands
+" ========================================================
 " Actions
-map <leader>am <action>(ShowIntentionActions)
-map <leader>aa <action>(ShowIntentionActions)
-map <leader>as <action>(SearchEverywhere)
+map <leader>a <action>(ShowIntentionActions)
 
 " Toggle bookmark
 map <leader>b <action>(ToggleBookmark)
@@ -130,17 +132,17 @@ map <leader>df <action>(ToggleFullScreen)
 " Errors Open NERDTree (use q to exit)
 map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
 map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
-map <leader>ee :NERDTreeToggle<CR>
-nmap <leader>ad <action>(ShowErrorDescription)
+nmap <leader>ed <action>(ShowErrorDescription)
+
+" map <C-t> :NERDTree<CR>
+map <C-t> :NERDTreeToggle<CR>
 
 " File navigation
 map <leader>ff <action>(GotoFile)
 map <leader>fr <action>(RecentFiles)
 map <leader>fc <action>(FindInPath)
-map <leader><leader> <action>(ShowIntentionActions)
 map <leader>fl <action>(RecentLocations)
 map <leader>fs <action>(NewScratchFile)
-
 
 " Go to code
 nmap <leader>gd <Action>(GotoDeclaration)
@@ -159,7 +161,6 @@ map <leader>gb <Action>(Git.Branches)
 " Jump around with easymotion
 map <leader>j <Plug>(easymotion-s)
 
-
 " New ...
 nmap <leader>nn <Action>(NewElement)
 nmap <leader>nf <Action>(NewFile)
@@ -169,7 +170,6 @@ nmap <leader>nm <Action>(NewModule)
 nmap <leader>np <Action>(NewProject)
 
 " Formatting
-map  <leader>p <action>(ReformatCode)
 map = <action>(ReformatCode)
 
 " Close active tab
@@ -210,10 +210,15 @@ map <leader>tr <Action>(RiderUnitTestRunContextAction)
 map <C-n> :action(MoveSelectionDown)<CR>
 
 
+
+" die dae cie cae
+set textobj-entire
+
+
 " Which-key settings
 set which-key
-let g:WhichKey_FontSize = 13
-let g:WhichKey_CommandColor = "#41ead4"j
+let g:WhichKey_FontSize = 12
+let g:WhichKey_CommandColor = "#41ead4"
 let g:WhichKey_PrefixColor = "#f335b2"
 let g:WhichKey_SortOrder = "by_key_prefix_first˜"
 
@@ -258,7 +263,7 @@ let g:WhichKeyDesc_git_commit = "<leader>gc Checkin Project"
 let g:WhichKeyDesc_git_status = "<leader>gs Activate Version Control Tool Window"
 let g:WhichKeyDesc_git_branches = "<leader>gb Git Branches"
 
-" let g:WhichKeyDesc_easymotion = "<leader>j Jump Easymotion"
+ let g:WhichKeyDesc_easymotion = "<leader>j Jump Easymotion"
 
 " let g:WhichKeyDesc_easymotion = "<leader>mm MainMenu"
 
@@ -293,4 +298,4 @@ let g:WhichKeyDesc_window_unsplit_all = "<leader>wa Unsplit All"
 " https://github.com/fanxiao92/ideavimguid
 " https://github.com/OptimusCrime/ideavim/blob/master/ideavimrc
 " https://github.com/citizenmatt/dotfiles/blob/master/ideavimrc
-" https://github.com/savesmith/Vim/blob/master/.ideavimrc 
+" https://github.com/savesmith/Vim/blob/master/.ideavimrc
