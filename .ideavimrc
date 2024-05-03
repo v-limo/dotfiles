@@ -90,7 +90,7 @@ map g, <Action>(JumpToNextChange)
 " code completion
 map <C-k> <Action>(EditorSelectWord)
 map <C-l> <Action>(EditorCompleteStatement)
-imap <C-;> <Esc><Action>(EditorCompleteStatement)i
+imap <C-;> <Action>(EditorCompleteStatement)
 nmap <C-;> <Action>(EditorCompleteStatement)
 
 
@@ -134,8 +134,9 @@ map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
 map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
 nmap <leader>ed <action>(ShowErrorDescription)
 
-" map <C-t> :NERDTree<CR>
-map <C-t> :NERDTreeToggle<CR>
+
+map <C-t> :NERDTree<CR>
+" map <C-t> :NERDTreeToggle<CR>
 
 " File navigation
 map <leader>ff <action>(GotoFile)
@@ -298,4 +299,4 @@ let g:WhichKeyDesc_window_unsplit_all = "<leader>wa Unsplit All"
 " https://github.com/fanxiao92/ideavimguid
 " https://github.com/OptimusCrime/ideavim/blob/master/ideavimrc
 " https://github.com/citizenmatt/dotfiles/blob/master/ideavimrc
-" https://github.com/savesmith/Vim/blob/master/.ideavimrc
+" https://github.com/savesmith/Vim/blob/master/.ideavimrc 

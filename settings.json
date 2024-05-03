@@ -1,25 +1,25 @@
 {
-  // open json editor for settings
-  "workbench.settings.editor": "json",
+  // Editor Formatting
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.wordWrap": "wordWrapColumn",
 
-  // === Editor Appearance and Behavior ===
+  // Editor Appearance
   "editor.accessibilitySupport": "off",
+  "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorStyle": "line",
-  "editor.cursorBlinking": "smooth",
   "editor.fontFamily": "JetBrains Mono, Fira Code",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
   "editor.fontWeight": 300,
-  "editor.smoothScrolling": true,
-  "editor.stickyScroll.enabled": true,
-  "editor.suggestSelection": "first",
-  "editor.tabSize": 2,
-  "editor.wordWrap": "wordWrapColumn",
-  "editor.insertSpaces": true,
-  "editor.formatOnType": true,
-  "editor.inlineSuggest.enabled": true,
-  "editor.linkedEditing": true,
+  "editor.glyphMargin": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.minimap.enabled": false,
   "editor.minimap.autohide": true,
   "editor.minimap.maxColumn": 50,
   "editor.minimap.renderCharacters": false,
@@ -27,147 +27,111 @@
   "editor.minimap.side": "right",
   "editor.minimap.size": "fill",
   "editor.mouseWheelZoom": true,
-  "files.autoSaveDelay": 2000,
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
+  "editor.overviewRulerBorder": false,
+  "editor.renderLineHighlight": "none",
+  "editor.renderWhitespace": "none",
+  "editor.smoothScrolling": true,
+  "editor.stickyScroll.enabled": true,
 
-  // === Emmet ===
+  // Emmet
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "postcss": "css"
   },
   "emmet.triggerExpansionOnTab": true,
 
-  // === Explorer ===
+  // Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.openEditors.visible": 1,
   "explorer.sortOrder": "type",
 
-  // === Git Integration ===
+  // File
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 2000,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Git
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
+  "git.path": "/usr/local/bin/git",
 
-  // === Code Formatting and Style ===
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.requireConfig": false,
-
-  // === File and Folder Management ===
-  "githubPullRequests.pullBranch": "never",
-
-  // === JavaScript and TypeScript ===
+  // JavaScript and TypeScript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "liveServer.settings.donotShowInfoMsg": true,
-  "liveServer.settings.donotVerifyTags": true,
 
-  // === Terminal Settings ===
+  // Language settings
+  "[css,csharp typescriptreact,javascriptreact, html, javascript, json, typescriptreact, md]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Terminal
   "terminal.integrated.cwd": "${workspaceFolder}",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
   },
-
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.letterSpacing": 0.5,
   "terminal.integrated.lineHeight": 1.2,
 
-  // === Language-specific Settings ===
-  "[css,csharp typescriptreact,javascriptreact, html, javascript, json, typescriptreact, md]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  // === Workbench and UI ===
-  "workbench.iconTheme": "material-icon-theme",
-
-  // === Code Snap ===
-  "git.path": "/usr/local/bin/git",
-  "breadcrumbs.filePath": "last",
-  "githubIssues.queries": [
-    {
-      "label": "My Issues",
-      "query": "default"
-    },
-    {
-      "label": "Created Issues",
-      "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
-    },
-    {
-      "label": "Recent Issues",
-      "query": "state:open repo:${owner}/${repository} sort:updated-desc"
-    }
-  ],
-
-  "screencastMode.keyboardOptions": {
-    "showCommands": false,
-    "showSingleEditorCursorMoves": false
-  },
-  "screencastMode.fontSize": 20,
-  "screencastMode.keyboardOverlayTimeout": 500,
-  "diffEditor.ignoreTrimWhitespace": false,
-  // "workbench.statusBar.visible": false,
-  "window.restoreFullscreen": true,
-  "window.newWindowDimensions": "fullscreen",
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "diffEditor.maxComputationTime": 0,
-  "workbench.preferredDarkColorTheme": "Monokai Vibrant",
-  "workbench.editorAssociations": {
-    "*.zip": "default",
-    "*.pdb": "default",
-    "*.db": "default"
-  },
-  "workbench.editor.closeOnFileDelete": true,
-  "githubIssues.issueBranchTitle": "${user}/feature/${issueNumber}",
-  "githubPullRequests.createOnPublishBranch": "never",
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // Workbench and UI
+  "workbench.activityBar.location": "top",
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#0000"
   },
   "workbench.colorTheme": "Monokai Vibrant",
-  "window.zoomLevel": 0.75,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.formatOnPaste": true,
-  "files.autoSave": "afterDelay",
-
-  // extra
-  "editor.minimap.enabled": false, // removes minimap
-  "editor.renderWhitespace": "none", // removes indent guides
-  "editor.renderLineHighlight": "none", // removes line highlight
-  "editor.overviewRulerBorder": false, // removes border from overview ruler (located on the right, same position as the scrollbar)
-  "editor.hideCursorInOverviewRuler": true, // hides cursor mark in the overview ruler
-  "editor.folding": true, // removes the folding feature
-  "editor.occurrencesHighlight": "off", // removes highlights occurrences (still works when you select a word)
-  "editor.matchBrackets": "never", // removes the highlight of matching brackets (I use Subtle Match Brackets extension for this)
-  "editor.glyphMargin": false, // removes the space used mainly for debugging indicators
-  "explorer.openEditors.visible": 1, // removes the activity bar (the 4 icons at the left of the screen), so now you will have to open the explorer, git, debugger and extension with shortcuts or through the Command Palette
-  "workbench.editor.showIcons": false, // removes icon from opened files in tabs
-
-  "workbench.editor.tabActionCloseVisibility": false, // removes cross icon from tabs
-  "workbench.statusBar.visible": false, // removes the status bar
-  "indenticator.color.dark": "rgba(255,255,255,.1)", // adds a subtle indent guide (needs Indenticator extension)
-  "workbench.colorCustomizations": {
-    // object that allows you to customize your color theme: https://code.visualstudio.com/docs/getstarted/theme-color-reference
-    "tab.activeBorder": "#0000" // removes border to highlight active tabs (the colors formats are: #RGB, #RGBA, #RRGGBB or #RRGGBBAA)
-  },
-  "editor.guides.indentation": false,
-  "workbench.activityBar.location": "top",
-  "window.commandCenter": false,
-  "[csharp]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode"
-  },
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.showIcons": false,
+  "workbench.editor.tabActionCloseVisibility": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.preferredDarkColorTheme": "Monokai Vibrant",
+  "workbench.settings.editor": "json",
   "workbench.sideBar.location": "right",
-  "editor.formatOnSave": true,
-
-  // ui
-  "editor.scrollbar.vertical": "auto",
+  "workbench.statusBar.visible": false,
+  "window.commandCenter": false,
+  "window.newWindowDimensions": "fullscreen",
+  "window.restoreFullscreen": true,
   "window.titleBarStyle": "custom",
-  "editor.scrollbar.horizontal": "auto"
+  "window.zoomLevel": 0.75,
+
+  // GitHub PR
+  "githubPullRequests.createOnPublishBranch": "never",
+  "githubPullRequests.pullBranch": "never",
+
+  // Live Server
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+
+  // Rainbow Brackets
+  "RainbowBrackets.depreciation-notice": false,
+
+  //  Folding
+  "editor.folding": true,
+
+  // Neo vim
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+      "command": "vscode-neovim.escape"
+    }
+  }
 }
-
-
-
