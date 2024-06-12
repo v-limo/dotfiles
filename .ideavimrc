@@ -8,21 +8,49 @@ set incsearch
 set hlsearch
 set visualbell
 set commentary
-set clipboard+=unnamed
+set clipboard+=unnamed   
 set surround
 set highlightedyank
 set sneak
 set nerdtree
 set quickscope
-set easymotion
+set easymotion 
 set notimeout
 
 let mapleader = " "
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 
-"" Key mappings
+" Key mappings
 inoremap jk <Esc>
+
+map <C-x> <Action>(ShowHoverInfo)
+map <C-e> <Action>(ShowErrorDescription)
+
+" Move highlighted text down
+xnoremap J :m '>+1<CR>gv=kgvo<esc>
+
+" Move highlighted text up
+xnoremap K :m '<-2<CR>gv=jgvo<esc>
+
+" Center to focus
+nnoremap { {zz
+nnoremap } }zz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap G Gzz
+nnoremap i zzi
+nnoremap I zzI
+nnoremap o zzo
+nnoremap O zzO
+nnoremap a zza
+nnoremap A zzA
+nnoremap s zzs
+nnoremap S zzS
+nnoremap c zzc
+nnoremap C zzC
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 " Navigation behaviour
 map H ^
@@ -36,7 +64,7 @@ nnoremap <D-l> <C-w>l
 nnoremap <D-k> <C-w>k
 nnoremap <D-j> <C-w>j
 
-" code completion
+" code completion 
 map <C-n>  <Action>(HippieCompletion)
 map <C-p> <Action>(HippieBackwardCompletion)
 
@@ -47,17 +75,28 @@ nnoremap <CR> o<Esc>
 vnoremap p "_dP`]
 nnoremap p p`]
 
-" Y yank whole line by default
-vnoremap y ygv<Esc>$
-nnoremap Y y$
+" remove highlights on enter
+" nnoremap <CR> :noh<CR><CR>
 
-" Yank and paste from clipboard
+" Yanking, Deleting, Cutting Configuration
 nnoremap ,y "+y
 vnoremap ,y "+y
 nnoremap ,yy "+yy
 nnoremap ,p "+p
-nmap ,c yiw  " Yank Word
-nmap ,v viw  " Select word
+
+" Yank Word
+nmap ,c yiw
+
+" Select word
+vnoremap y ygv<Esc>$
+nmap Y y$
+
+" Vim Surround Configuration
+let g:surround_no_mappings = 1 
+nmap ds <Plug>DSurround  
+nmap cs <Plug>CSurround 
+nmap gs <Plug>YSurround
+vmap gs <Plug>VSurround
 
 
 " Folding
@@ -66,14 +105,14 @@ nmap za <Action>(CollapseAllRegions)
 nmap zA <Action>(ExpandAllRegions)
 
 " I dont really know this :)
-nmap <C-k> <C-w>k
-nmap <C-j> <C-w>j
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
+nmap <C-k> <C-w>k                                 
+nmap <C-j> <C-w>j                                
+nmap <C-h> <C-w>h                               
+nmap <C-l> <C-w>l                              
 
 " Tab navigation
-nnoremap <c-n> :tabnext<CR>
-nnoremap <c-p> :tabprev<CR>
+nnoremap <c-n> :TabNext<CR>
+nnoremap <c-p> :TabPrev<CR>
 nmap <Tab> <Action>(NextTab)
 
 " Jump between methods - Previous was ]]
@@ -85,6 +124,7 @@ nmap <C-i> <Action>(Back)
 nmap <C-o> <Action>(Forward)
 map g; <Action>(JumpToLastChange)
 map g, <Action>(JumpToNextChange)
+map ; <Action>(ActivateTerminalToolWindow)
 
 
 " code completion
@@ -114,14 +154,8 @@ vnoremap <D-j> :m'>+<CR>gv=gv
 vnoremap <D-k> :m-2<CR>gv=gv
 
 " Leader commands
-" ========================================================
-" Actions
 map <leader>a <action>(ShowIntentionActions)
-
-" Toggle bookmark
 map <leader>b <action>(ToggleBookmark)
-
-" Comment lines
 map <leader>c <action>(CommentByLineComment)
 
 " Display options
@@ -134,7 +168,6 @@ map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
 map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
 nmap <leader>ed <action>(ShowErrorDescription)
 
-
 map <C-t> :NERDTree<CR>
 " map <C-t> :NERDTreeToggle<CR>
 
@@ -144,8 +177,8 @@ map <leader>fr <action>(RecentFiles)
 map <leader>fc <action>(FindInPath)
 map <leader>fl <action>(RecentLocations)
 map <leader>fs <action>(NewScratchFile)
-
-" Go to code
+ 
+" Go to code    
 nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>gy <Action>(GotoTypeDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
@@ -186,14 +219,14 @@ map <leader>rv <Action>(IntroduceVariable)
 map <leader>rf <Action>(IntroduceField)
 map <leader>rs <Action>(ChangeSignature)
 map <leader>rr <Action>(Refactorings.QuickListPopupAction)
-
+ 
 " Terminal
 nmap <leader>tt <Action>(ActivateTerminalToolWindow)
 nmap <leader>tc <Action>(Terminal.OpenInTerminal)
 
-" Select
+" Select  
 map <leader>va <Action>(SelectAll)
-
+ 
 " Window splits
 map <leader>wv  <Action>(SplitVertically)
 map <leader>ws  <Action>(SplitHorizontally)
@@ -298,5 +331,5 @@ let g:WhichKeyDesc_window_unsplit_all = "<leader>wa Unsplit All"
 
 " https://github.com/fanxiao92/ideavimguid
 " https://github.com/OptimusCrime/ideavim/blob/master/ideavimrc
-" https://github.com/citizenmatt/dotfiles/blob/master/ideavimrc
+" https://github.com/citizenmatt/dotfiles/blob/master/ideavimrc 
 " https://github.com/savesmith/Vim/blob/master/.ideavimrc 
