@@ -1,4 +1,4 @@
-"" Base Settings
+" Base Settings
 set scrolloff=10
 set linenumber
 set showmode
@@ -7,31 +7,53 @@ set smartcase
 set incsearch
 set hlsearch
 set visualbell
-set commentary
 set clipboard+=unnamed   
+set notimeout
+set commentary
 set surround
 set highlightedyank
 set sneak
 set nerdtree
 set quickscope
-set easymotion 
-set notimeout
+set easymotion
+set textobj-entire
+set which-key
 
 let mapleader = " "
+inoremap jk <Esc>
+
+
+" Fuzzy finder
+" map <leader>pf <action>(com.mituuz.fuzzier.Fuzzier)
+" map <leader>mf <action>(com.mituuz.fuzzier.FuzzyMover)
+" map <Leader>gg <action>(com.mituuz.fuzzier.FuzzierVCS)
+
+
+DTreeToggle
+
+map <C-t> :NERDTree<CR> " NERDTreeToggle<CR>
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 
-" Key mappings
-inoremap jk <Esc>
 
+" Popup navigation
 map <C-x> <Action>(ShowHoverInfo)
 map <C-e> <Action>(ShowErrorDescription)
 
-" Move highlighted text down
-xnoremap J :m '>+1<CR>gv=kgvo<esc>
 
-" Move highlighted text up
-xnoremap K :m '<-2<CR>gv=jgvo<esc>
+" Move highlighted text
+" xnoremap J :m '>+1<CR>gv=kgvo<esc>
+" xnoremap K :m '<-2<CR>gv=jgvo<esc>
+
+
+" Next buffer
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<CR>
+
+
+" Go to matching Brackets  
+nnoremap <leader>% :action(GotoMatchingBracket)<CR>
+
 
 " Center to focus
 nnoremap { {zz
@@ -52,6 +74,14 @@ nnoremap C zzC
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
+" Prevent d, c, s from copying to the clipboard
+nnoremap d "_d
+vnoremap d "_d
+nnoremap c "_c
+vnoremap c "_c
+nnoremap s "_s
+vnoremap s "_s
+
 " Navigation behaviour
 map H ^
 map L $
@@ -64,8 +94,9 @@ nnoremap <D-l> <C-w>l
 nnoremap <D-k> <C-w>k
 nnoremap <D-j> <C-w>j
 
-" code completion 
-map <C-n>  <Action>(HippieCompletion)
+
+" Code completion
+map <C-n> <Action>(HippieCompletion)
 map <C-p> <Action>(HippieBackwardCompletion)
 
 " Add space when pressing Enter in normal mode
@@ -74,9 +105,6 @@ nnoremap <CR> o<Esc>
 " After block yank and paste, move cursor to the end of operated text and don't override register
 vnoremap p "_dP`]
 nnoremap p p`]
-
-" remove highlights on enter
-" nnoremap <CR> :noh<CR><CR>
 
 " Yanking, Deleting, Cutting Configuration
 nnoremap ,y "+y
@@ -91,48 +119,39 @@ nmap ,c yiw
 vnoremap y ygv<Esc>$
 nmap Y y$
 
-" Vim Surround Configuration
-let g:surround_no_mappings = 1 
-nmap ds <Plug>DSurround  
-nmap cs <Plug>CSurround 
-nmap gs <Plug>YSurround
-vmap gs <Plug>VSurround
-
 
 " Folding
 nmap zz <Action>(ExpandCollapseToggleAction)
 nmap za <Action>(CollapseAllRegions)
 nmap zA <Action>(ExpandAllRegions)
 
-" I dont really know this :)
+" Pane navigation
 nmap <C-k> <C-w>k                                 
 nmap <C-j> <C-w>j                                
 nmap <C-h> <C-w>h                               
 nmap <C-l> <C-w>l                              
 
 " Tab navigation
-nnoremap <c-n> :TabNext<CR>
-nnoremap <c-p> :TabPrev<CR>
+nnoremap <C-n> :TabNext<CR>
+nnoremap <C-p> :TabPrev<CR>
 nmap <Tab> <Action>(NextTab)
 
-" Jump between methods - Previous was ]]
+" Jump between methods
 nmap [ <Action>(MethodUp)
 nmap ] <Action>(MethodDown)
 
-" location
+" Location navigation
 nmap <C-i> <Action>(Back)
 nmap <C-o> <Action>(Forward)
 map g; <Action>(JumpToLastChange)
 map g, <Action>(JumpToNextChange)
 map ; <Action>(ActivateTerminalToolWindow)
 
-
-" code completion
+" Code completion
 map <C-k> <Action>(EditorSelectWord)
 map <C-l> <Action>(EditorCompleteStatement)
 imap <C-;> <Action>(EditorCompleteStatement)
 nmap <C-;> <Action>(EditorCompleteStatement)
-
 
 " Easy visual indentation
 vnoremap < <gv
@@ -141,11 +160,11 @@ vnoremap > >gv
 " Execute macro saved in 'q' register
 nnoremap qj @q
 
-" Popup navigation - not working as expected
+" Popup navigation
 map <C-j> <Action>(PopupMenu-selectNext)
 map <C-k> <Action>(PopupMenu-selectPrev)
 
-" move code up and down
+" Move code up and down
 inoremap <D-k> <Esc>:m-2<CR>==gi
 nnoremap <D-j> :m+<CR>==
 nnoremap <D-k> :m-2<CR>==
@@ -155,7 +174,6 @@ vnoremap <D-k> :m-2<CR>gv=gv
 
 " Leader commands
 map <leader>a <action>(ShowIntentionActions)
-map <leader>b <action>(ToggleBookmark)
 map <leader>c <action>(CommentByLineComment)
 
 " Display options
@@ -163,13 +181,11 @@ map <leader>dd <action>(ToggleDistractionFreeMode)
 map <leader>dz <action>(ToggleZenMode)
 map <leader>df <action>(ToggleFullScreen)
 
-" Errors Open NERDTree (use q to exit)
+
+" Errors Open NERDTree
 map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
 map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
 nmap <leader>ed <action>(ShowErrorDescription)
-
-map <C-t> :NERDTree<CR>
-" map <C-t> :NERDTreeToggle<CR>
 
 " File navigation
 map <leader>ff <action>(GotoFile)
@@ -195,7 +211,7 @@ map <leader>gb <Action>(Git.Branches)
 " Jump around with easymotion
 map <leader>j <Plug>(easymotion-s)
 
-" New ...
+" New element
 nmap <leader>nn <Action>(NewElement)
 nmap <leader>nf <Action>(NewFile)
 nmap <leader>nd <Action>(NewDir)
@@ -225,8 +241,8 @@ nmap <leader>tt <Action>(ActivateTerminalToolWindow)
 nmap <leader>tc <Action>(Terminal.OpenInTerminal)
 
 " Select  
-map <leader>va <Action>(SelectAll)
- 
+nmap <leader>va <Action>(SelectAll)
+
 " Window splits
 map <leader>wv  <Action>(SplitVertically)
 map <leader>ws  <Action>(SplitHorizontally)
@@ -239,27 +255,21 @@ map <leader>wl  <Action>(MoveWindowRight)
 map <leader>ww <Action>(HideAllWindows)
 map <leader>wa <Action>(UnsplitAll)
 
+
 " Tests
 map <leader>tr <Action>(RiderUnitTestRunContextAction)
-map <C-n> :action(MoveSelectionDown)<CR>
 
+" Basic setup for which-key
+let g:WhichKey_FontSize = 12  
+let g:WhichKey_CommandColor = "#41ead4"  
+let g:WhichKey_PrefixColor = "#f335b2"  
+let g:WhichKey_SortOrder = "by_key_prefix_first"
 
-
-" die dae cie cae
-set textobj-entire
-
-
-" Which-key settings
-set which-key
-let g:WhichKey_FontSize = 12
-let g:WhichKey_CommandColor = "#41ead4"
-let g:WhichKey_PrefixColor = "#f335b2"
-let g:WhichKey_SortOrder = "by_key_prefix_first˜"
-
+" Key mappings and descriptions
 let g:WhichKeyDesc_action = "<leader>a Actions"
 let g:WhichKeyDesc_action_context_menu = "<leader>Show Intention"
 let g:WhichKeyDesc_action_alt = "<leader>aa Show Intention"
-let g:WhichKeyDesc_action_search = "<leader>as Search everywhere "
+let g:WhichKeyDesc_action_search = "<leader>as Search everywhere"
 
 let g:WhichKeyDesc_bookmark = "<leader>b Toggle Bookmark"
 
@@ -279,7 +289,6 @@ let g:WhichKeyDesc_file_nav = "<leader>f File Navigation"
 let g:WhichKeyDesc_file_nav_goto_file = "<leader>ff Go to File"
 let g:WhichKeyDesc_file_nav_show_recent_files = "<leader>fr Recent Files"
 let g:WhichKeyDesc_file_nav_goto_content = "<leader>fc Find in Path"
-" let g:WhichKeyDesc_file_quickLook = "<leader><leader> Recent Files"
 let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>fl Recent Locations"
 let g:WhichKeyDesc_file_scratch = "<leader>fs New Scratch File"
 
@@ -297,11 +306,7 @@ let g:WhichKeyDesc_git_commit = "<leader>gc Checkin Project"
 let g:WhichKeyDesc_git_status = "<leader>gs Activate Version Control Tool Window"
 let g:WhichKeyDesc_git_branches = "<leader>gb Git Branches"
 
- let g:WhichKeyDesc_easymotion = "<leader>j Jump Easymotion"
-
-" let g:WhichKeyDesc_easymotion = "<leader>mm MainMenu"
-
-" let g:WhichKeyDesc_easymotion = "<leader>p Reformat"
+let g:WhichKeyDesc_easymotion = "<leader>j Jump Easymotion"
 
 let g:WhichKeyDesc_close_tab = "<leader>q Close Tabs"
 let g:WhichKeyDesc_close_tab_close_content = "<leader>qq Close Content"
@@ -318,7 +323,7 @@ let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change Signature"
 let g:WhichKeyDesc_refactoring_all = "<leader>rr Quick List Popup Action"
 
 let g:WhichKeyDesc_terminal = "<leader>t Terminal"
-let g:WhichKeyDesc_terminal_activate = "<leader>tt  Terminal Window"
+let g:WhichKeyDesc_terminal_activate = "<leader>tt Terminal Window"
 let g:WhichKeyDesc_terminal_open = "<leader>tc Open in Terminal"
 
 let g:WhichKeyDesc_window = "<leader>w Window Splits"
@@ -329,7 +334,4 @@ let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move Editor to Opposit
 let g:WhichKeyDesc_window_hide_all = "<leader>ww Hide All Windows"
 let g:WhichKeyDesc_window_unsplit_all = "<leader>wa Unsplit All"
 
-" https://github.com/fanxiao92/ideavimguid
-" https://github.com/OptimusCrime/ideavim/blob/master/ideavimrc
-" https://github.com/citizenmatt/dotfiles/blob/master/ideavimrc 
-" https://github.com/savesmith/Vim/blob/master/.ideavimrc 
+let g:WhichKeyDesc_tests = "<leader>tr Run Tests"
