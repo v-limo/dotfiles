@@ -1,59 +1,29 @@
 " Base Settings
 set scrolloff=10
-set linenumber
+set number
 set showmode
 set showcmd
 set smartcase
 set incsearch
 set hlsearch
 set visualbell
-set clipboard+=unnamed   
+set clipboard+=unnamed
 set notimeout
 set commentary
-set surround
+" set surround
 set highlightedyank
 set sneak
-set nerdtree
+set NERDTree
 set quickscope
 set easymotion
 set textobj-entire
 set which-key
 
+" Leader key
 let mapleader = " "
+
+" Escape using 'jk' in insert mode
 inoremap jk <Esc>
-
-
-" Fuzzy finder
-" map <leader>pf <action>(com.mituuz.fuzzier.Fuzzier)
-" map <leader>mf <action>(com.mituuz.fuzzier.FuzzyMover)
-" map <Leader>gg <action>(com.mituuz.fuzzier.FuzzierVCS)
-
-
-DTreeToggle
-
-map <C-t> :NERDTree<CR> " NERDTreeToggle<CR>
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeMapJumpParent='h'
-
-
-" Popup navigation
-map <C-x> <Action>(ShowHoverInfo)
-map <C-e> <Action>(ShowErrorDescription)
-
-
-" Move highlighted text
-" xnoremap J :m '>+1<CR>gv=kgvo<esc>
-" xnoremap K :m '<-2<CR>gv=jgvo<esc>
-
-
-" Next buffer
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>bp :bprevious<CR>
-
-
-" Go to matching Brackets  
-nnoremap <leader>% :action(GotoMatchingBracket)<CR>
-
 
 " Center to focus
 nnoremap { {zz
@@ -74,71 +44,24 @@ nnoremap C zzC
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
-" Prevent d, c, s from copying to the clipboard
-nnoremap d "_d
-vnoremap d "_d
-nnoremap c "_c
-vnoremap c "_c
-nnoremap s "_s
-vnoremap s "_s
-
-" Navigation behaviour
-map H ^
-map L $
-map J }
-map K {
-
-" Pane navigation on Mac
-nnoremap <D-h> <C-w>h
-nnoremap <D-l> <C-w>l
-nnoremap <D-k> <C-w>k
-nnoremap <D-j> <C-w>j
-
-
 " Code completion
 map <C-n> <Action>(HippieCompletion)
 map <C-p> <Action>(HippieBackwardCompletion)
 
-" Add space when pressing Enter in normal mode
-nnoremap <CR> o<Esc>
+" Popup navigation - the name could be a better name.
+map <C-x> <Action>(ShowHoverInfo)
+map <C-e> <Action>(ShowErrorDescription)
 
-" After block yank and paste, move cursor to the end of operated text and don't override register
-vnoremap p "_dP`]
-nnoremap p p`]
+" Popup navigation
+map <C-j> <Action>(PopupMenu-selectNext)
+map <C-k> <Action>(PopupMenu-selectPrev)
 
-" Yanking, Deleting, Cutting Configuration
-nnoremap ,y "+y
-vnoremap ,y "+y
-nnoremap ,yy "+yy
-nnoremap ,p "+p
-
-" Yank Word
-nmap ,c yiw
-
-" Select word
-vnoremap y ygv<Esc>$
-nmap Y y$
-
-
-" Folding
-nmap zz <Action>(ExpandCollapseToggleAction)
-nmap za <Action>(CollapseAllRegions)
-nmap zA <Action>(ExpandAllRegions)
-
-" Pane navigation
-nmap <C-k> <C-w>k                                 
-nmap <C-j> <C-w>j                                
-nmap <C-h> <C-w>h                               
-nmap <C-l> <C-w>l                              
 
 " Tab navigation
 nnoremap <C-n> :TabNext<CR>
 nnoremap <C-p> :TabPrev<CR>
 nmap <Tab> <Action>(NextTab)
 
-" Jump between methods
-nmap [ <Action>(MethodUp)
-nmap ] <Action>(MethodDown)
 
 " Location navigation
 nmap <C-i> <Action>(Back)
@@ -147,45 +70,125 @@ map g; <Action>(JumpToLastChange)
 map g, <Action>(JumpToNextChange)
 map ; <Action>(ActivateTerminalToolWindow)
 
-" Code completion
-map <C-k> <Action>(EditorSelectWord)
-map <C-l> <Action>(EditorCompleteStatement)
-imap <C-;> <Action>(EditorCompleteStatement)
-nmap <C-;> <Action>(EditorCompleteStatement)
+
+" NERDTree Settings
+map <C-t> :NERDTreeFocus<CR>
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
+" Add space when pressing Enter in normal mode
+nnoremap <CR> o<Esc>
+
+" Pane navigation on Mac
+nnoremap <D-h> <C-w>h
+nnoremap <D-l> <C-w>l
+nnoremap <D-k> <C-w>k
+nnoremap <D-j> <C-w>j
+
+" Navigation
+map H ^
+map L $
+map J }
+map K {
+
+
+" Folding
+nmap zz <Action>(ExpandCollapseToggleAction)
+nmap za <Action>(CollapseAllRegions)
+nmap zA <Action>(ExpandAllRegions)
+
+
+" After block yank and paste, move cursor to the end of operated text and don't override register
+vnoremap p "_dP`]
+nnoremap p p`]
+
+
+" Yanking, Deleting, Cutting Configuration
+nnoremap ,y "+y
+vnoremap ,y "+y
+nnoremap ,yy "+yy
+nnoremap ,p "+p
+
+
+" Yank Word
+nmap ,c yiw
+
+
+" Select word
+vnoremap y ygv<Esc>
+
+" Moving this to test....
+nmap Y y$
+
+" Formatting
+map = <action>(ReformatCode)
+
+" Jump between methods
+nmap [ <Action>(MethodUp)
+nmap ] <Action>(MethodDown)
+
 
 " Easy visual indentation
 vnoremap < <gv
 vnoremap > >gv
 
-" Execute macro saved in 'q' register
-nnoremap qj @q
-
-" Popup navigation
-map <C-j> <Action>(PopupMenu-selectNext)
-map <C-k> <Action>(PopupMenu-selectPrev)
 
 " Move code up and down
-inoremap <D-k> <Esc>:m-2<CR>==gi
+vnoremap <D-j> :m'>+<CR>gv=gv
 nnoremap <D-j> :m+<CR>==
+inoremap <D-k> <Esc>:m-2<CR>==gi
 nnoremap <D-k> :m-2<CR>==
 inoremap <D-j> <Esc>:m+<CR>==gi
-vnoremap <D-j> :m'>+<CR>gv=gv
 vnoremap <D-k> :m-2<CR>gv=gv
 
-" Leader commands
+" Actions
 map <leader>a <action>(ShowIntentionActions)
+
+" Buffer management
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bd :bd<CR>
+
+" Comment
 map <leader>c <action>(CommentByLineComment)
 
-" Display options
-map <leader>dd <action>(ToggleDistractionFreeMode)
-map <leader>dz <action>(ToggleZenMode)
-map <leader>df <action>(ToggleFullScreen)
+" Macro Mappings
+nnoremap <leader>mr q
+nnoremap <leader>mp @q
+nnoremap <leader>mv :registers<CR>
 
+" Close Tabs
+map <leader>qq <action>(CloseContent)
+map <leader>qa <action>(CloseAllEditors)
+map <leader>qo <Action>(CloseAllEditorsButActive)
+map <leader>qp <Action>(CloseAllUnpinnedEditors)
 
-" Errors Open NERDTree
+" Window splits
+map <leader>wv  <Action>(SplitVertically)
+map <leader>ws  <Action>(SplitHorizontally)
+map <leader>wu  <Action>(Unsplit)
+map <leader>wm  <Action>(MoveEditorToOppositeTabGroup)
+map <leader>wh  <Action>(MoveWindowLeft)
+map <leader>wj  <Action>(MoveWindowDown)
+map <leader>wk  <Action>(MoveWindowUp)
+map <leader>wl  <Action>(MoveWindowRight)
+map <leader>ww <Action>(HideAllWindows)
+map <leader>wa <Action>(UnsplitAll)
+
+" Search and Replace
+nnoremap <Esc> :nohlsearch<CR>:let @/=""<CR>
+nnoremap <leader>sr :%s//g<Left><Left>
+nnoremap <leader>sw :%s/\<C-r><C-w>\///g<Left><Left>
+vnoremap <leader>sw :s/\%V\<C-r><C-w>\///g<Left><Left>
+nnoremap <leader>sc :%s//g|c<Left><Left><Left>
+noremap <leader>swc :%s/\<C-r><C-w>\///gc<Left><Left>
+vnoremap <leader>swc :s/\%V\<C-r><C-w>\///gc<Left><Left>
+
+" Errors
 map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
 map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
 nmap <leader>ed <action>(ShowErrorDescription)
+nmap <leader>ee <action>(ShowErrorDescription)
 
 " File navigation
 map <leader>ff <action>(GotoFile)
@@ -193,8 +196,8 @@ map <leader>fr <action>(RecentFiles)
 map <leader>fc <action>(FindInPath)
 map <leader>fl <action>(RecentLocations)
 map <leader>fs <action>(NewScratchFile)
- 
-" Go to code    
+
+" Go to code
 nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>gy <Action>(GotoTypeDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
@@ -219,15 +222,6 @@ nmap <leader>nc <Action>(NewClass)
 nmap <leader>nm <Action>(NewModule)
 nmap <leader>np <Action>(NewProject)
 
-" Formatting
-map = <action>(ReformatCode)
-
-" Close active tab
-map <leader>qq <action>(CloseContent)
-map <leader>qa <action>(CloseAllEditors)
-map <leader>qo <Action>(CloseAllEditorsButActive)
-map <leader>qp <Action>(CloseAllUnpinnedEditors)
-
 " Refactoring
 map <leader>rn <Action>(RenameElement)
 map <leader>rm <Action>(ExtractMethod)
@@ -235,41 +229,19 @@ map <leader>rv <Action>(IntroduceVariable)
 map <leader>rf <Action>(IntroduceField)
 map <leader>rs <Action>(ChangeSignature)
 map <leader>rr <Action>(Refactorings.QuickListPopupAction)
- 
+
 " Terminal
 nmap <leader>tt <Action>(ActivateTerminalToolWindow)
 nmap <leader>tc <Action>(Terminal.OpenInTerminal)
 
-" Select  
-nmap <leader>va <Action>(SelectAll)
+" Select All
+nnoremap <leader>va :normal ggVG<CR>
 
-" Window splits
-map <leader>wv  <Action>(SplitVertically)
-map <leader>ws  <Action>(SplitHorizontally)
-map <leader>wu  <Action>(Unsplit)
-map <leader>wm  <Action>(MoveEditorToOppositeTabGroup)
-map <leader>wh  <Action>(MoveWindowLeft)
-map <leader>wj  <Action>(MoveWindowDown)
-map <leader>wk  <Action>(MoveWindowUp)
-map <leader>wl  <Action>(MoveWindowRight)
-map <leader>ww <Action>(HideAllWindows)
-map <leader>wa <Action>(UnsplitAll)
-
-
-" Tests
-map <leader>tr <Action>(RiderUnitTestRunContextAction)
-
-" Basic setup for which-key
-let g:WhichKey_FontSize = 12  
-let g:WhichKey_CommandColor = "#41ead4"  
-let g:WhichKey_PrefixColor = "#f335b2"  
+" Which-key configuration
+let g:WhichKey_FontSize = 12
+let g:WhichKey_CommandColor = "#41ead4"
+let g:WhichKey_PrefixColor = "#f335b2"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
-
-" Key mappings and descriptions
-let g:WhichKeyDesc_action = "<leader>a Actions"
-let g:WhichKeyDesc_action_context_menu = "<leader>Show Intention"
-let g:WhichKeyDesc_action_alt = "<leader>aa Show Intention"
-let g:WhichKeyDesc_action_search = "<leader>as Search everywhere"
 
 let g:WhichKeyDesc_bookmark = "<leader>b Toggle Bookmark"
 
@@ -281,7 +253,7 @@ let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free"
 let g:WhichKeyDesc_fullscreen = "<leader>df Toggle FullScreen"
 
 let g:WhichKeyDesc_open_nerdtree = "<leader>ee Open NERDTree"
-let g:WhichKeyDesc_errors = "<leader>e Errors-NERDTree"
+let g:WhichKeyDesc_errors = "<leader>e Errors"
 let g:WhichKeyDesc_errors_next = "<leader>en Next Error"
 let g:WhichKeyDesc_errors_prev = "<leader>ep Previous Error"
 
@@ -308,6 +280,20 @@ let g:WhichKeyDesc_git_branches = "<leader>gb Git Branches"
 
 let g:WhichKeyDesc_easymotion = "<leader>j Jump Easymotion"
 
+
+let g:WhichKeyDesc_macros = "<leader>m Macros"
+let g:WhichKeyDesc_macros_record = "<leader>mr Record Macro"
+let g:WhichKeyDesc_macros_playback = "<leader>mp Playback Macro"
+let g:WhichKeyDesc_macros_view = "<leader>mv View Macros"
+
+let g:WhichKeyDesc_new = "<leader>n Create New"
+let g:WhichKeyDesc_new_element = "<leader>ne New Element"
+let g:WhichKeyDesc_new_file = "<leader>nf New File"
+let g:WhichKeyDesc_new_dir = "<leader>nd New Directory"
+let g:WhichKeyDesc_new_class = "<leader>nc New Class"
+let g:WhichKeyDesc_new_module = "<leader>nm New Module"
+let g:WhichKeyDesc_new_project = "<leader>np New Project"
+
 let g:WhichKeyDesc_close_tab = "<leader>q Close Tabs"
 let g:WhichKeyDesc_close_tab_close_content = "<leader>qq Close Content"
 let g:WhichKeyDesc_close_tab_close_all_editors = "<leader>qa Close All Editors"
@@ -322,6 +308,13 @@ let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce Field"
 let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change Signature"
 let g:WhichKeyDesc_refactoring_all = "<leader>rr Quick List Popup Action"
 
+let g:WhichKeyDesc_search_replace = "<leader>s Search and Replace"
+let g:WhichKeyDesc_clear_search = "<Esc> Clear Search Highlights"
+let g:WhichKeyDesc_search_replace_global = "<leader>sr Replace Globally"
+let g:WhichKeyDesc_search_replace_word = "<leader>sw Replace Word"
+let g:WhichKeyDesc_search_replace_confirm = "<leader>sc Replace with Confirmation"
+let g:WhichKeyDesc_search_replace_word_confirm = "<leader>swc Replace Word with Confirmation"
+
 let g:WhichKeyDesc_terminal = "<leader>t Terminal"
 let g:WhichKeyDesc_terminal_activate = "<leader>tt Terminal Window"
 let g:WhichKeyDesc_terminal_open = "<leader>tc Open in Terminal"
@@ -335,3 +328,5 @@ let g:WhichKeyDesc_window_hide_all = "<leader>ww Hide All Windows"
 let g:WhichKeyDesc_window_unsplit_all = "<leader>wa Unsplit All"
 
 let g:WhichKeyDesc_tests = "<leader>tr Run Tests"
+
+let g:WhichKeyDesc_select_all = "<leader>va Select All"
