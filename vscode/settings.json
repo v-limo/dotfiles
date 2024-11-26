@@ -1,0 +1,198 @@
+{
+  // Editor Formatting
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.lineHeight": 22,
+  "color-highlight.markRuler": false,
+  "editor.suggestFontSize": 16,
+  "editor.minimap.enabled": false,
+  "editor.suggestLineHeight": 30,
+  "editor.lineNumbers": "on",
+  "editor.showFoldingControls": "never",
+  "editor.renderLineHighlight": "none",
+  "workbench.layoutControl.type": "menu",
+  "workbench.layoutControl.enabled": false,
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "window.title": " ",
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // Terminal Settings
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1",
+    "Q_NEW_SESSION": "1"
+  },
+
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.letterSpacing": 0.5,
+  "terminal.integrated.lineHeight": 1.2,
+
+  // Editor Appearance
+  "editor.accessibilitySupport": "off",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "line",
+  "explorer.openEditors.visible": 0,
+  "editor.fontFamily": "JetBrains Mono, Fira Code",
+  "editor.fontLigatures": true,
+  "editor.bracketPairColorization.enabled": false,
+  "editor.guides.highlightActiveBracketPair": false,
+  "explorer.decorations.colors": false,
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.fontSize": 17,
+  "editor.fontWeight": 300,
+  "editor.glyphMargin": false,
+  "editor.guides.indentation": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.minimap.autohide": true,
+  "editor.minimap.maxColumn": 50,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "mouseover",
+  "editor.minimap.side": "right",
+  "editor.minimap.size": "fill",
+  "editor.mouseWheelZoom": true,
+  "editor.overviewRulerBorder": false,
+  "editor.cursorBlinking": "phase",
+  "editor.renderWhitespace": "none",
+  "editor.smoothScrolling": true,
+  "editor.stickyScroll.enabled": true,
+
+  // Emmet Settings
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "postcss": "css"
+  },
+  "emmet.triggerExpansionOnTab": true,
+
+  // File Settings
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 2000,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Git Settings
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
+  "git.path": "/usr/local/bin/git",
+
+  // JavaScript & TypeScript Settings
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // Language-specific Formatting
+  "[css,csharp,typescriptreact,javascriptreact,html,javascript,json,md]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "shakram02.bash-beautify"
+  },
+
+  // Workbench Settings
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.showIcons": false,
+  "workbench.editor.tabActionCloseVisibility": false,
+  "workbench.preferredDarkColorTheme": "Monokai Vibrant",
+  "workbench.sideBar.location": "left",
+  "workbench.statusBar.visible": false,
+  "workbench.tree.renderIndentGuides": "none",
+
+  // Window Settings
+  "window.commandCenter": false,
+  "window.newWindowDimensions": "fullscreen",
+  "window.restoreFullscreen": true,
+  "window.titleBarStyle": "custom",
+  "window.zoomLevel": 0.75,
+
+  // GitHub PR Settings
+  "githubPullRequests.createOnPublishBranch": "never",
+  "githubPullRequests.pullBranch": "never",
+
+  // Live Server Settings
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+
+  // Rainbow Brackets
+  "RainbowBrackets.depreciation-notice": false,
+
+  // Miscellaneous
+  "editor.formatOnSave": true,
+  "csharp.suppressBuildAssetsNotification": true,
+  "explorer.confirmDragAndDrop": false,
+  "vsicons.dontShowNewVersionMessage": true,
+
+  // Kubernetes Plugin Settings
+  "vs-kubernetes": {
+    "vscode-kubernetes.helm-path-mac": "/Users/vincentlimo/.vs-kubernetes/tools/helm/darwin-amd64/helm"
+  },
+  // "workbench.colorTheme": "JetBrains Rider New UI Dark",
+
+  "dotnet.codeLens.enableReferencesCodeLens": false,
+  "explorer.confirmDelete": false,
+
+  // "explorer.excludeGitIgnore": true,
+
+  // vim
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 300,
+  "vim.smartcase": true,
+  "vim.timeout": 1000,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+
+  "breadcrumbs.enabled": false,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontal": "hidden",
+
+  "terminal.integrated.fontFamily": "JetBrains Mono",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Monokai Vibrant",
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua"
+  }
+}

@@ -1,0 +1,54 @@
+# ==========================================
+# Alacritty Configuration File
+# ==========================================
+
+
+# Font Configuration
+[font]
+size = 25.0
+normal = { family = "UbuntuMono Nerd Font" }
+bold = { family = "UbuntuMono Nerd Font", style = "Bold" }
+italic = { family = "UbuntuMono Nerd Font", style = "Italic" }
+bold_italic = { family = "UbuntuMono Nerd Font", style = "Bold Italic" }
+
+# ------------------------------------------
+# Window Settings
+[window]
+decorations = "none"               # Remove window borders
+padding = { x = 7, y = 0 }         # Set padding around the text
+opacity = 0.98                     # Background opacity: 98%
+startup_mode = "Fullscreen"        # Start Alacritty in fullscreen mode
+
+# ------------------------------------------
+# Scrolling Behavior
+[scrolling]
+history = 10000                    # Number of lines in the scrollback buffer
+multiplier = 3                     # Adjust scroll speed
+
+# ------------------------------------------
+# Cursor Configuration
+[cursor]
+style = "Beam"                     # Cursor style: Block, Underline, or Beam
+blink_interval = 500               # Blink interval in milliseconds
+
+# ------------------------------------------
+# Shell Configuration
+[terminal.shell]
+program = "tmux"                   # Set default shell to tmux
+
+# ------------------------------------------
+# General Settings
+[general]
+live_config_reload = true          # Enable live config reload on changes
+
+# ------------------------------------------
+# Import External Theme
+import = ["~/.config/alacritty/themes/gruvbox_dark.toml"]
+
+# ------------------------------------------
+# Visual Bell Configuration
+[bell]
+animation = "EaseOutExpo"          # Smooth animation for visual bell
+duration = 150                     # Duration of visual bell (ms)
+color = "0xff0000"                 # Visual bell color: Red
+

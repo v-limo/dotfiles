@@ -1,0 +1,14 @@
+[font]
+size = 25.0
+normal = { family = "UbuntuMono Nerd Font" }
+
+[window]
+decorations = "none"
+padding = { x = 7, y = 0 }
+
+[import]
+files = ["~/.config/alacritty/themes/gruvbox_dark.toml"]
+
+[shell]
+program = "/usr/local/bin/tmux"
+
