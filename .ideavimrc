@@ -1,0 +1,282 @@
+" Base Settings
+set scrolloff=10
+set showcmd
+set smartcase
+set incsearch
+set hlsearch
+set visualbell
+set clipboard=unnamedplus
+set notimeout
+set commentary
+set highlightedyank
+set sneak
+set NERDTree
+set easymotion
+set textobj-entire
+set which-key
+
+inoremap jk <Esc>
+nnoremap <CR> o<Esc>
+nnoremap <Esc> :nohlsearch<CR>
+
+" Code completion
+map <C-n> <Action>(HippieCompletion)
+map <C-p> <Action>(HippieBackwardCompletion)
+
+" Popup navigation
+map <C-j> <Action>(PopupMenu-selectNext)
+map <C-k> <Action>(PopupMenu-selectPrev)
+
+nnoremap <C-\> :action ActivateTerminalToolWindow<CR>
+
+" Hover functionality
+nmap <C-h> <Action>(ShowHoverInfo)
+
+" Location navigation
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+
+" Open files and toggle focus
+map <C-t> :NERDTreeToggle<CR>
+
+" Tab navigation
+nmap <Tab> <Action>(NextTab)
+
+" Move code up and down
+vnoremap <D-j> :m'>+<CR>gv=gv
+nnoremap <D-j> :m+<CR>==
+inoremap <D-j> <Esc>:m+<CR>==gi
+vnoremap <D-k> :m-2<CR>gv=gv
+nnoremap <D-k> :m-2<CR>==
+inoremap <D-k> <Esc>:m-2<CR>==gi
+
+" Jump between methods
+nmap [ <Action>(MethodUp)
+nmap ] <Action>(MethodDown)
+
+" Visual and normal mode movement fixes
+vnoremap j gj
+vnoremap k gk
+map H ^
+map L $
+map J }
+map K {
+
+nnoremap U <C-r>
+
+vnoremap p "_dP`]
+nnoremap p p`]
+
+" Code formatting
+map = <Action>(ReformatCode)
+
+" Indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Yank word
+nmap ,c yiw
+
+" Jump around
+map g; <Action>(JumpToLastChange)
+map g, <Action>(JumpToNextChange)
+
+" Folding management
+nmap zz <Action>(ExpandCollapseToggleAction)
+nmap zM <Action>(ExpandAllRegions)
+nmap Zm <Action>(ExpandAllRegions)
+nmap zm <Action>(CollapseAllRegions)
+
+let mapleader = " "
+
+" Which-key configuration
+let g:WhichKey_CommandColor = "#41ead4"
+let g:WhichKey_FontSize = 12
+let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+
+
+" SearchEverywhere and Actions (A)
+nnoremap <leader><leader> :action SearchEverywhere<CR>
+map <leader>a <action>(ShowIntentionActions)
+" -------------
+let g:WhichKeyDesc_search_everywhere = "<leader><leader> Search Everywhere"
+let g:WhichKeyDesc_show_intention_actions = "<leader>a Show Intention Actions"
+
+
+" Buffer management (B)
+nnoremap <leader>ba <action>(CloseAllEditors)
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bo <action>(CloseAllEditorsButActive)
+nnoremap <leader>bp <action>(CloseAllUnpinnedEditors)
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bq <action>(CloseContent)
+" -------------
+let g:WhichKeyDesc_buffer = "<leader>b Buffer Management"
+let g:WhichKeyDesc_buffer_close_active = "<leader>bo Close All But Active"
+let g:WhichKeyDesc_buffer_close_all = "<leader>ba Close All Buffers"
+let g:WhichKeyDesc_buffer_close_unpinned = "<leader>bp Close All Unpinned Buffers"
+let g:WhichKeyDesc_buffer_delete = "<leader>bd Delete Buffer"
+let g:WhichKeyDesc_buffer_next = "<leader>bn Next Buffer"
+let g:WhichKeyDesc_buffer_previous = "<leader>bp Previous Buffer"
+
+" Commenting Option 2 (C)
+let g:WhichKeyDesc_comment = "<leader>c Comment Line" 
+" -------------
+map <leader>c <action>(CommentByLineComment)
+
+" Display modes (D)
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>df <action>(ToggleFullScreen)
+map <leader>dz <action>(ToggleZenMode)
+" -------------
+let g:WhichKeyDesc_display = "<leader>d Display Modes"
+let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free Mode"
+let g:WhichKeyDesc_fullscreen = "<leader>df Toggle Fullscreen"
+let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle Zen Mode"  
+
+
+" NERDTree Errors (E)
+map <leader>ee :NERDTreeToggle<CR>
+map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+" -------------
+let g:WhichKeyDesc_open_nerdtree = "<leader>ee  Toggle NERDTree"
+let g:WhichKeyDesc_next_error = "<leader>en Go to Next Error"
+let g:WhichKeyDesc_prev_error = "<leader>ep Go to Previous Error"
+
+
+" File navigation (F)
+map <leader>fc <action>(FindInPath)
+map <leader>ff <action>(GotoFile)
+map <leader>fl <action>(RecentLocations)
+map <leader>fr <action>(RecentFiles)
+map <leader>fs <action>(NewScratchFile)
+" -------------
+let g:WhichKeyDesc_file_nav = "<leader>f File Navigation"
+let g:WhichKeyDesc_file_nav_find_in_path = "<leader>fc Find in Path"
+let g:WhichKeyDesc_file_nav_goto_file = "<leader>ff Go to File"
+let g:WhichKeyDesc_file_nav_recent_files = "<leader>fr Recent Files"
+let g:WhichKeyDesc_file_nav_recent_locations = "<leader>fl Recent Locations"
+let g:WhichKeyDesc_file_scratch = "<leader>fs New Scratch File"
+
+
+" Go to code  && Git commands (G)
+map <leader>gB <action>(Git.Branches)
+map <leader>gg <action>(ActivateVersionControlToolWindow)
+map <leader>ga <action>(ShowIntentionActions)
+map <leader>gb <Action>(Forward)
+map <leader>gc <action>(CommentByLineComment)
+map <leader>gd <Action>(GotoDeclaration)
+map <leader>gf <Action>(Back)
+map <leader>gi <Action>(GotoImplementation)
+map <leader>gt <Action>(GotoTest)
+map <leader>gu <Action>(ShowUsages)
+map <leader>gy <Action>(GotoTypeDeclaration)
+" ------------- 
+let g:WhichKeyDesc_comment = "<leader>gc Comment Line" 
+let g:WhichKeyDesc_git = "<leader>g Git"
+let g:WhichKeyDesc_git_branches = "<leader>gB Git Branches"
+let g:WhichKeyDesc_git_status = "<leader>gg Activate Version Control"
+let g:WhichKeyDesc_goto = "<leader>g Go to Code"
+let g:WhichKeyDesc_goto_back = "<leader>gf Back"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go to Declaration"
+let g:WhichKeyDesc_goto_forward = "<leader>gb Forward"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go to Implementation"
+let g:WhichKeyDesc_goto_test = "<leader>gt Go to Test"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gy Go to Type Declaration"
+let g:WhichKeyDesc_goto_usages = "<leader>gu Show Usages"
+
+
+" Creating new elements (N)
+nmap <leader>nc <Action>(NewClass)
+nmap <leader>nd <Action>(NewDir)
+nmap <leader>nf <Action>(NewFile)
+nmap <leader>nm <Action>(NewModule)
+nmap <leader>nn <Action>(NewElement)
+nmap <leader>np <Action>(NewProject)
+" -------------
+let g:WhichKeyDesc_new = "<leader>n New" 
+let g:WhichKeyDesc_new_class = "<leader>nc New Class"
+let g:WhichKeyDesc_new_dir = "<leader>nd New Directory"
+let g:WhichKeyDesc_new_file = "<leader>nf New File"
+let g:WhichKeyDesc_new_module = "<leader>nm New Module"
+let g:WhichKeyDesc_new_element = "<leader>nn New Element"
+let g:WhichKeyDesc_new_project = "<leader>np New Project"
+
+
+" Mapping to reload ideavimrc (R)
+nnoremap <leader>rr :source ~/.ideavimrc<CR>
+" -------------
+let g:WhichKeyDesc_reload_ideavimrc = "<leader>rr Reload IdeaVimrc"
+
+
+" Refactoring (R)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rn <Action>(RenameElement)
+map <leader>rl <Action>(Refactorings.QuickListPopupAction)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rv <Action>(IntroduceVariable)
+" -------------
+let g:WhichKeyDesc_refactoring = "<leader>r Refactoring"
+let g:WhichKeyDesc_refactoring_all = "<leader>rl Refactorings Quick List" 
+let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce Field"
+let g:WhichKeyDesc_refactoring_method = "<leader>rm Extract Method"
+let g:WhichKeyDesc_refactoring_rename = "<leader>rn Rename Element"
+let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change Signature"
+let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce Variable"
+
+
+" Search and Replace (S)
+nnoremap <leader>sr :%s//g<Left><Left>
+" -------------
+let g:WhichKeyDesc_search_replace = "<leader>s Search and Replace"
+let g:WhichKeyDesc_search_replace_global = "<leader>sr Replace Globally"
+
+" Tab management and Tool Windows (T)
+nmap <leader>tc :action ActivateTerminalToolWindow<CR>
+nmap <leader>tt :action ActivateTestToolWindow<CR>      
+nmap <leader>tw :action HideActiveWindow<CR>          
+" -------------
+let g:WhichKeyDesc_terminal = "<leader>t Terminal"
+let g:WhichKeyDesc_terminal_hide = "<leader>tw Hide Active Window"
+let g:WhichKeyDesc_terminal_toggle = "<leader>tc Activate Terminal"
+let g:WhichKeyDesc_terminal_tool_window = "<leader>tt Activate Test Tool Window"
+
+
+" Select All
+nnoremap <leader>va ggVG
+" -------------
+let g:WhichKeyDesc_select_all = "<leader>va Select All"
+
+" Window management (W)
+map <leader>wa <Action>(UnsplitAll)
+map <leader>wh <Action>(MoveWindowLeft)
+map <leader>wj <Action>(MoveWindowDown)
+map <leader>wk <Action>(MoveWindowUp)
+map <leader>wl <Action>(MoveWindowRight)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+map <leader>wv <Action>(SplitVertically)
+map <leader>ww <Action>(HideAllWindows)
+" -------------
+let g:WhichKeyDesc_window = "<leader>w Window Management"
+let g:WhichKeyDesc_window_hide = "<leader>ww Hide All Windows"
+let g:WhichKeyDesc_window_move = "<leader>wm Move Editor"
+let g:WhichKeyDesc_window_split_horizontally = "<leader>ws Split Horizontally"
+let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split Vertically"
+let g:WhichKeyDesc_window_unsplit = "<leader>wu Unsplit"
+let g:WhichKeyDesc_window_unsplit_all = "<leader>wa Unsplit All"
+
+
+" Miscellaneous 
+nmap <leader>h :action ShowHoverInfo<CR>
+nmap <leader>p :action ParameterInfo<CR>
+nmap <leader>q :action QuickTypeDefinition<CR>
+" -------------
+let g:WhichKeyDesc_hover_info = "<leader>h Show Hover Info"
+let g:WhichKeyDesc_parameter_info = "<leader>p Show Parameter Info"
+let g:WhichKeyDesc_quick_type_definition = "<leader>q Show Quick Type Definition"
